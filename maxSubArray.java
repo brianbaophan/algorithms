@@ -24,17 +24,7 @@ class Solution {
              * value (indicating the start of a new sub-array being argued).
              */
             currentValue = nums[i];
-
-            /*
-             * in order to save space, notice how a negative element in a contiguous
-             * sub-array never leads to the max sum compraed to other sub-arrays.
-             * 
-             * if the previous running sum is negative, we can assume that the sum for 
-             * this sub-array will not be the max sum. 
-             */
-            if (runningValue >= 0) {
-                runningValue += currentValue;
-            }
+            runningValue += currentValue;
 
             /*
              * this algorithm compares the running value and the current value. 
@@ -42,10 +32,8 @@ class Solution {
              * the greatest value between the two becomes the new running value,
              * or the largest sum known so far in the sub-array.
              */
-            else {
-                if (currentValue >= runningValue) {
-                    runningValue = currentValue;
-                }
+            if (currentValue >= runningValue) {
+                runningValue = currentValue;
             }
 
             if (runningValue > maxValue) {
